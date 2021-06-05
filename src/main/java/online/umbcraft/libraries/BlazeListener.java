@@ -1,12 +1,14 @@
 package online.umbcraft.libraries;
 
-import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Blaze;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.inventory.ItemStack;
 
 public class BlazeListener implements Listener {
 
@@ -16,8 +18,11 @@ public class BlazeListener implements Listener {
             return;
 
         Blaze blaze = (Blaze) e.getEntity();
-        Bukkit.getServer().broadcastMessage("blaze died by "+blaze.getLastDamageCause().getCause().toString());
-        //if(blaze.getLastDamageCause().getCause() == DamageCause.
-    }
 
+        if(blaze.getLastDamageCause().getCause() != EntityDamageEvent.DamageCause.DROWNING)
+            return;
+
+        if(Math.random() > 0.5)
+            e.getDrops().add(new ItemStack(Material.BLAZE_ROD));
+    }
 }
