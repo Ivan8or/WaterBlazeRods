@@ -1,0 +1,7 @@
+name: WaterBlazeRods
+version: @version@
+main: online.umbcraft.libraries.waterblazerods.WaterBlazeRods
+api-version: 1.16
+authors: [ Ivan8or ]
+description: blazes drop blaze rods when killed by water
+website: umbcraft.online
